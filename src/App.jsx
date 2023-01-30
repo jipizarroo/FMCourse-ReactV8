@@ -1,40 +1,12 @@
-import React from "react";
-import { createRoot } from "react-dom";
-
-const Pet = (props) => {
-  return React.createElement("div", {}, [
-    React.createElement("h1", {}, props.name),
-    React.createElement("h2", {}, props.animal),
-    React.createElement("h2", {}, props.breed),
-  ]);
-};
+import { createRoot } from "react-dom/client";
+import SearchParams from "./SearchParams";
 
 const App = () => {
-  return React.createElement(
-    // what type of element we put in
-    "div",
-    // atr that we wanna give it, class, id, styletag, etc.
-    {},
-    // childrens of what we first created.
-    [
-      React.createElement("h1", {}, "Adopt Me!"),
-      // One way data flow => I can pass data from App to Pet, but i cant pass data from Pet to App 99%.
-      React.createElement(Pet, {
-        animal: "Dog",
-        name: "Luna",
-        breed: "Havanese",
-      }),
-      React.createElement(Pet, {
-        animal: "Bird",
-        name: "Pepper",
-        breed: "Cockatail",
-      }),
-      React.createElement(Pet, {
-        animal: "Cat",
-        name: "Doink",
-        breed: "Mixed",
-      }),
-    ]
+  return (
+    <div>
+      <h1>Adtop Me!</h1>
+      <SearchParams />
+    </div>
   );
 };
 
@@ -46,4 +18,4 @@ const root = createRoot(container);
 // if you give it a component ( To create element ), it will render it, not like on line 15 where
 // you give it a tag. This is the magic of React, a component creates a new component, that gives
 // even more components.
-root.render(React.createElement(App));
+root.render(<App />);
