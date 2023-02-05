@@ -8,8 +8,8 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       // What we are saying here is, ones its fetch, dont fetch it again.
-      staleTime: Infinity,
-      cacheTime: Infinity,
+      // staleTime: Infinity,
+      // cacheTime: Infinity,
     },
   },
 });
