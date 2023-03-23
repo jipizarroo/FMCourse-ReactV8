@@ -2,7 +2,7 @@ import express from 'express';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath} from 'url';
-import renderApp from './dist/server/ServerApp.js';
+import renderApp from "./dist/server/ServerApp.js";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -10,9 +10,9 @@ const PORT = process.env.PORT || 3001;
 
 const html = fs.readFileSync(path.resolve(__dirname, './dist/client/index.html')).toString();
 
-const part = html.split("not rendered");
+const parts = html.split("not rendered");
 
-const express = app();
+const app = express();
 app.use("/assets",
 express.statis(path.resolve(__dirname, "./dist/client/assets"))
 )
@@ -40,3 +40,7 @@ app.use((req, res) => {
         }
     })
 })
+
+
+console.log(`listening on http://localhost:${PORT}`);
+app.listen(PORT);
